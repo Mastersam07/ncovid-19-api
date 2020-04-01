@@ -25,7 +25,11 @@ url = "https://futa.edu.ng/"
 user_agent = get_random_ua()
 headers = {
     'user-agent': user_agent,
-    'referer': 'https://google.ng/'
+    'referer': 'https://google.ng/',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+    'Accept-Encoding': 'gzip, deflate, br',
+    'Accept-Language': 'en-US,en;q=0.9',
+    'Pragma': 'no-cache',
 }
 r = requests.get('https://covid19.ncdc.gov.ng', headers=headers)
 
