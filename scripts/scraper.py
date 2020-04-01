@@ -25,6 +25,7 @@ url = "https://futa.edu.ng/"
 user_agent = get_random_ua()
 headers = {
     'user-agent': user_agent,
+    'referer': 'https://google.ng/'
 }
 r = requests.get('https://covid19.ncdc.gov.ng', headers=headers)
 
@@ -41,4 +42,3 @@ print(content.prettify())
 # # for link in tb.find_all('b'):
 # #     name = link.find('a')
 # #     print(name)
-
