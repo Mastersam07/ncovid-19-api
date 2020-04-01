@@ -5,12 +5,12 @@ from .apiviews import StateViewSet
 from .apiviews import StateList, StateDetail, CasesList
 
 router = DefaultRouter()
-router.register('states', StateViewSet, base_name='states')
+router.register('api/states', StateViewSet, base_name='states')
 
 urlpatterns = [
-    path("states/", StateList.as_view(), name="states_list"),
-    path("states/<int:pk>/", StateDetail.as_view(), name="states_detail"),
-    path("states/<int:pk>/choices/", CasesList.as_view(), name="cases_list"),
+    path("api/states/", StateList.as_view(), name="states_list"),
+    path("api/states/<int:pk>/", StateDetail.as_view(), name="states_detail"),
+    path("api/states/<int:pk>/cases/", CasesList.as_view(), name="cases_list"),
 ]
 
 urlpatterns += router.urls
