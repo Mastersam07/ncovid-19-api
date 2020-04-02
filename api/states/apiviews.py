@@ -32,6 +32,6 @@ class StateDetail(APIView):
 #     serializer_class = CaseSerializer
 #
 #
-# class StateViewSet(viewsets.ModelViewSet):
-#     queryset = State.objects.all()
-#     serializer_class = StateSerializer
+class StateViewSet(viewsets.ModelViewSet):
+    queryset = Data.objects.all()
+    serializer_class = StateSerializer
