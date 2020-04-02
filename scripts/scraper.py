@@ -1,21 +1,9 @@
+import csv
+
 from bs4 import BeautifulSoup
 import requests
+from sqlalchemy import create_engine  # db engine
 import pandas as pd
-
-
-def reorder_states(text):
-    for eachstate in text:
-        df['States'] = text[5:-6]
-    text.to_string()
-    new_text = text[5:-6]
-    return new_text
-
-
-def reorder_cases(text):
-    text.to_string()
-    new_text = text[3:-4]
-    return new_text
-
 
 """
 delays = [12, 3, 9, 21, 5, 6, 19, 7, 33, 11, 2, 17, 4]
@@ -67,41 +55,68 @@ My_table = content.find('table', {'id': 'custom3'})  # table to be scrapped havi
 links = My_table.findAll('b')  # all cases data seems to be in b tags
 stately = My_table.findAll('td')  # all state name seems to be in td tags
 
+# print(links)
+
 # save cases data to list
 cases = []
 for link in links:
-    cases.append(link.iloc)
+    cases.append(link.text)
 
 # save states data to list
 states = []
 for state in stately:
-    states.append(state)
+    states.append(state.text)
 
 # escape string appears in list in odd indexes
 # get states with even indexes
-some = []
+somes = []
 for i in range(0, len(states), 2):
-    some.append(states[i])
+    somes.append(states[i])
 
 # take data to pandas dataframe
 df = pd.DataFrame()
-df['States'] = some
+df['States'] = somes
 df['Cases'] = cases
 
-# # removing garbage from states
-df['States'] = df['States'].to_string()
-
-# removing garbage from cases
-df['Cases'] = df['Cases'].to_string()
-
-# print(type(df.dtypes))
+print('Dataframe\n', df)
 
 # save data to csv
-df.to_csv(r'C:\Users\USER\Desktop\Flutter\Challenge\ncovid-19-api\api\ncovid.csv', index=False)
+df.to_csv(r'ncovid.csv', index=True, index_label='id')
 print("SUCCESS!!!")
 
-# tweet = content.findAll('p', attrs={"class": "content"}).text
-# print tweet
+# import sqlite3
+# #
+# conn = sqlite3.connect(r"C:\Users\USER\Desktop\Flutter\Challenge\ncovid-19-api\api\db.sqlite3")
+# cur = conn.cursor()
+# cur.execute("CREATE TABLE data (id NOT_NULL AUTO_INCREMENT,States, Cases);")
+# sql = "INSERT INTO data(States, Cases) VALUES (df.States, df.Cases);"
+# cur.execute(sql)
+# conn.commit()
+# cur.execute("select * from data;")
+# results = cur.fetchall()
+# print(results)
 #
-# for tweet in content.findAll('p', attrs={"class": "content"}):
-#     print tweet.text.encode('utf-8')
+# # engine = create_engine(r'sqlite:///C:\Users\USER\Desktop\Flutter\Challenge\ncovid-19-api\api\db.sqlite3')
+# # (df['States']).to_sql(name='states_stat', con=engine, if_exists='replace', index=False)
+# # (df['Cases']).to_sql(name='states_cases', con=engine, if_exists='replace', index=False)
+# #
+# # print('Data transferred from df to sqlite!!!')
+# #
+# # print('Checking the data...')
+#
+# # import sqlite3
+# #
+# # conn = sqlite3.connect(r"C:\Users\USER\Desktop\Flutter\Challenge\ncovid-19-api\api\db.sqlite3")
+# # cur = conn.cursor()
+# # cur.execute("CREATE TABLE data (States, Cases);")
+# # with open('ncovid.csv', 'rb') as fin:  # `with` statement available in 2.5+
+# #     # csv.DictReader uses first line in file for column headings by default
+# #     dr = csv.DictReader(fin)  # comma is default delimiter
+# #     to_db = [(i['States'], i['Cases']) for i in dr]
+# #
+# # cur.executemany("INSERT INTO data (States, Cases) VALUES (?, ?);", to_db)
+# # conn.commit()
+# # conn.close()
+# # cur.execute("select * from data;")
+# # results = cur.fetchall()
+# # print(results)

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import State, Cases
+from .models import Data
 
-admin.site.register(State)
-admin.site.register(Cases)
+admin.site.register(Data)
+# admin.site.register(StatesCases)
