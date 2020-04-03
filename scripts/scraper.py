@@ -73,16 +73,38 @@ somes = []
 for i in range(0, len(states), 2):
     somes.append(states[i])
 
+# set length to be 37 due to irregularities
+# print(len(somes[0:37]))
+# print(somes[0:37])
+# print(len(cases[0:37]))
+# print(cases[0:37])
+
 # take data to pandas dataframe
 df = pd.DataFrame()
-df['States'] = somes
-df['Cases'] = cases
+df['States'] = somes[0:37]
+df['Cases'] = cases[0:37]
 
 print('Dataframe\n', df)
 
 # save data to csv
 df.to_csv(r'ncovid.csv', index=True, index_label='id')
 print("SUCCESS!!!")
+
+# connecting to mysql
+# from pandas.io import sql
+# import MySQLdb
+
+from sqlalchemy import create_engine
+
+# engine = create_engine('mysql+pymysql://root:@localhost/ncovid')
+engine = create_engine(r'sqlite:///C:\Users\USER\Desktop\Flutter\Challenge\ncovid-19-api\api\db.sqlite3')
+# con = MySQLdb.connect(host="localhost", user="root",
+#                       passwd="", db="ncovid")
+
+# adding df to tables
+df.to_sql(con=engine, name='data', if_exists='replace')
+
+print('Data transferred from df to mysql successfully!!!')
 
 # import sqlite3
 # #
@@ -102,12 +124,12 @@ print("SUCCESS!!!")
 # #
 # # print('Data transferred from df to sqlite!!!')
 # #
-# # print('Checking the data...')
-#
-# # import sqlite3
+print('Checking the data...')
+
+import sqlite3
 # #
-# # conn = sqlite3.connect(r"C:\Users\USER\Desktop\Flutter\Challenge\ncovid-19-api\api\db.sqlite3")
-# # cur = conn.cursor()
+conn = sqlite3.connect(r"C:\Users\USER\Desktop\Flutter\Challenge\ncovid-19-api\api\db.sqlite3")
+cur = conn.cursor()
 # # cur.execute("CREATE TABLE data (States, Cases);")
 # # with open('ncovid.csv', 'rb') as fin:  # `with` statement available in 2.5+
 # #     # csv.DictReader uses first line in file for column headings by default
@@ -117,6 +139,6 @@ print("SUCCESS!!!")
 # # cur.executemany("INSERT INTO data (States, Cases) VALUES (?, ?);", to_db)
 # # conn.commit()
 # # conn.close()
-# # cur.execute("select * from data;")
-# # results = cur.fetchall()
-# # print(results)
+cur.execute("select * from data;")
+results = cur.fetchall()
+print(results)
