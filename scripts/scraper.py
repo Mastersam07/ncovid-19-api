@@ -1,37 +1,8 @@
-import csv
-
 from bs4 import BeautifulSoup
 import requests
 from sqlalchemy import create_engine  # db engine
 import pandas as pd
 
-"""
-delays = [12, 3, 9, 21, 5, 6, 19, 7, 33, 11, 2, 17, 4]
-
-
-def get_random_ua():
-    random_ua = ''
-    ua_file = 'ua_file.txt'
-    try:
-        with open(ua_file) as f:
-            lines = f.readlines()
-        if len(lines) > 0:
-            while not random_ua.strip():
-                prng = np.random.RandomState()
-                index = prng.permutation(len(lines) - 1)
-                idx = np.asarray(index, dtype=np.integer)[0]
-                random_proxy = lines[int(idx)]
-    except Exception as ex:
-        print('Exception in random_ua')
-        print(str(ex))
-    finally:
-        return random_ua
-
-
-url = "https://futa.edu.ng/"
-user_agent = get_random_ua()
-
-"""
 headers = {
     #     # 'user-agent': user_agent,
     'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) '
@@ -43,8 +14,9 @@ headers = {
     #     # 'Pragma': 'no-cache',
 }
 
+url = "someurl"
 # make a request with headers
-r = requests.get('https://covid19.ncdc.gov.ng', headers=headers, timeout=5)
+r = requests.get(url=url, headers=headers, timeout=5)
 
 print(r.status_code)  # 200 for success
 
@@ -73,12 +45,6 @@ somes = []
 for i in range(0, len(states), 2):
     somes.append(states[i])
 
-# set length to be 37 due to irregularities
-# print(len(somes[0:37]))
-# print(somes[0:37])
-# print(len(cases[0:37]))
-# print(cases[0:37])
-
 # take data to pandas dataframe
 df = pd.DataFrame()
 df['States'] = somes[0:37]
@@ -90,55 +56,21 @@ print('Dataframe\n', df)
 df.to_csv(r'ncovid.csv', index=True, index_label='id')
 print("SUCCESS!!!")
 
-# connecting to mysql
-# from pandas.io import sql
-# import MySQLdb
 
-from sqlalchemy import create_engine
-
-# engine = create_engine('mysql+pymysql://root:@localhost/ncovid')
-engine = create_engine(r'sqlite:///C:\Users\USER\Desktop\Flutter\Challenge\ncovid-19-api\api\db.sqlite3')
-# con = MySQLdb.connect(host="localhost", user="root",
-#                       passwd="", db="ncovid")
+engine = create_engine(r'sqlite:///C:\Users\USER\Desktop\Flutter\Challenge\appapi\api\db.sqlite3')
 
 # adding df to tables
-df.to_sql(con=engine, name='data', if_exists='replace')
+df.to_sql(con=engine, name='data', if_exists='replace', index=True, index_label='id')
 
-print('Data transferred from df to mysql successfully!!!')
+print('Data transferred from df to sqlite successfully!!!')
 
+# print('Checking the data...')
+#
 # import sqlite3
-# #
-# conn = sqlite3.connect(r"C:\Users\USER\Desktop\Flutter\Challenge\ncovid-19-api\api\db.sqlite3")
+# # #
+# conn = sqlite3.connect(r"C:\Users\USER\Desktop\Flutter\Challenge\appapi\api\db.sqlite3")
 # cur = conn.cursor()
-# cur.execute("CREATE TABLE data (id NOT_NULL AUTO_INCREMENT,States, Cases);")
-# sql = "INSERT INTO data(States, Cases) VALUES (df.States, df.Cases);"
-# cur.execute(sql)
-# conn.commit()
+#
 # cur.execute("select * from data;")
 # results = cur.fetchall()
 # print(results)
-#
-# # engine = create_engine(r'sqlite:///C:\Users\USER\Desktop\Flutter\Challenge\ncovid-19-api\api\db.sqlite3')
-# # (df['States']).to_sql(name='states_stat', con=engine, if_exists='replace', index=False)
-# # (df['Cases']).to_sql(name='states_cases', con=engine, if_exists='replace', index=False)
-# #
-# # print('Data transferred from df to sqlite!!!')
-# #
-print('Checking the data...')
-
-import sqlite3
-# #
-conn = sqlite3.connect(r"C:\Users\USER\Desktop\Flutter\Challenge\ncovid-19-api\api\db.sqlite3")
-cur = conn.cursor()
-# # cur.execute("CREATE TABLE data (States, Cases);")
-# # with open('ncovid.csv', 'rb') as fin:  # `with` statement available in 2.5+
-# #     # csv.DictReader uses first line in file for column headings by default
-# #     dr = csv.DictReader(fin)  # comma is default delimiter
-# #     to_db = [(i['States'], i['Cases']) for i in dr]
-# #
-# # cur.executemany("INSERT INTO data (States, Cases) VALUES (?, ?);", to_db)
-# # conn.commit()
-# # conn.close()
-cur.execute("select * from data;")
-results = cur.fetchall()
-print(results)
