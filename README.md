@@ -2,7 +2,7 @@
 
 Get Nigeria Covid-19 states by states
 
-![GitHub contributors](https://img.shields.io/github/contributors/mastersam07/ncovid-19-api?color=success&style=flat-square)
+[![GitHub contributors](https://img.shields.io/github/contributors/mastersam07/ncovid-19-api?color=success&style=flat-square)](https://github.com/Mastersam07/ncovid-19-api/graphs/contributors)
 ![GitHub last commit](https://img.shields.io/github/last-commit/mastersam07/ncovid-19-api?style=flat-square)
 [![License](https://img.shields.io/badge/license-MIT-success.svg?style=flat-square)](https://github.com/Mastersam07/ncovid-19-api/blob/master/LICENSE)
 
