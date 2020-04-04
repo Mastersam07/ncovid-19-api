@@ -18,11 +18,12 @@ from django.urls import path, re_path, include
 from rest_framework_swagger.views import get_swagger_view
 from rest_framework.documentation import include_docs_urls
 
-schema_view = get_swagger_view(title='Nigeria Covid API')
+schema_view = get_swagger_view(title='Nigeria Covid-19 API')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'api/docs/', schema_view),
     re_path(r'^', include('states.urls')),
-    path(r'api/maindocs/', include_docs_urls(title='Nigeria Covid API')),
+    re_path(r'^', include('confirmed.urls')),
+    path(r'', include_docs_urls(title='Nigeria Covid-19 API')),
 ]
