@@ -1,0 +1,2 @@
+web: gunicorn api.wsgi --log-file -
+clock: python clock.py
