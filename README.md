@@ -71,7 +71,13 @@ $ python manage.py migrate
 ```sh
 $ python manage.py runserver
 ```
- 
+
+## 📸 ScreenShots
+
+|<img src="ss/1.png" width="250">|<img src="ss/2.png" width="250">|
+|<img src="ss/3.png" width="250">|<img src="ss/4.png" width="250">|
+
+
 ## 🐛 Bugs/Request
 #### Encounter any problem(s)? feel free to open an issue. If you feel you could make something better, please raise a ticket on Github and I'll look into it. Pull request are also welcome.
 
