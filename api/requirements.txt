@@ -2,7 +2,7 @@ APScheduler==3.6.3
 beautifulsoup4==4.8.2
 bs4==0.0.1
 dj-database-url==0.5.0
-Django==2.1.5
+Django==2.2.10
 django-background-tasks==1.2.5
 django-compat==1.0.15
 django-heroku==0.3.1
