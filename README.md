@@ -7,7 +7,7 @@ Get Nigeria Covid-19 states by states
 [![License](https://img.shields.io/badge/license-MIT-success.svg?style=flat-square)](https://github.com/Mastersam07/ncovid-19-api/blob/master/LICENSE)
 
 > This api is live
->> This api is to server a mobile app available at https://github.com/Mastersam07/ncovid19
+>> This api servers a mobile app available at https://github.com/Mastersam07/ncovid19
 
 
 ## Demo
