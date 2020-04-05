@@ -52,6 +52,9 @@ class Data(models.Model):
     states = models.CharField(db_column='States', max_length=13, blank=True, null=True)  # Field name made lowercase.
     cases = models.CharField(db_column='Cases', max_length=3, blank=True, null=True)  # Field name made lowercase.
 
+    def __str__(self):
+        return self.states
+
     class Meta:
         managed = False
         db_table = 'data'
