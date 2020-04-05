@@ -6,4 +6,4 @@ from .models import Confirmed
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Confirmed
-        fields = '__all__'
+        fields = ('categories', 'values')
