@@ -7,7 +7,7 @@ Get Nigeria Covid-19 states by states
 [![License](https://img.shields.io/badge/license-MIT-success.svg?style=flat-square)](https://github.com/Mastersam07/ncovid-19-api/blob/master/LICENSE)
 
 > This api is live
->> This api servers a mobile app available at https://github.com/Mastersam07/ncovid19
+>> Serving data from NCDC(Nigeria Center For Disease Control) as a JSON API
 
 
 ## Demo
@@ -25,7 +25,7 @@ Check the `live API` <a href="https://covid9ja.herokuapp.com/"> here</a>
 
 ## ✨ Features
 - [x] Nigeria states and cases
-- [ ] Nigeria total cases
+- [x] Nigeria total cases
 
 
 ## Dependencies
@@ -76,6 +76,7 @@ $ python manage.py runserver
 
 |<img src="ss/1.png" width="250">|<img src="ss/2.png" width="250">|
 |<img src="ss/3.png" width="250">|<img src="ss/4.png" width="250">|
+|<img src="ss/5.png" width="250">|
 
 
 ## 🐛 Bugs/Request
@@ -83,6 +84,6 @@ $ python manage.py runserver
 
 ## ⭐️ License
 #### <a href="https://github.com/Mastersam07/ncovid-19-api/blob/master/LICENSE">MIT LICENSE</a>
-
+##### Transitively from NCDC Site, the data may not be used for commercial purposes.
 ## 🤓 Developer(s)
 **Abada Samuel Oghenero**
