@@ -1,3 +1,5 @@
+import sqlite3
+
 from bs4 import BeautifulSoup
 import requests
 from sqlalchemy import create_engine  # db engine
@@ -94,16 +96,16 @@ from sqlalchemy import create_engine
 # engine = create_engine('mysql+pymysql://root:@localhost/ncovid')
 
 # sqlite engine
-# engine = create_engine(r'sqlite:///db.sqlite3')
+engine = sqlite3.connect(r"C:\Users\USER\Desktop\ncovid-19-api\api\db.sqlite3")
 
 # connections for mysql
 # con = MySQLdb.connect(host="localhost", user="root",
 #                       passwd="", db="ncovid")
 
 # add postgres db engine
-engine = create_engine('postgresql+psycopg2://postgres:mastersam@localhost/ncovid')
+# engine = create_engine('postgresql+psycopg2://postgres:mastersam@localhost/ncovid')
 
 # adding df to tables
 df.to_sql(con=engine, name='data', if_exists='replace', index=True, index_label='id')
 #
-print('Data transferred from df to postgresql successfully!!!')
+print('Data transferred from df to sqlite successfully!!!')

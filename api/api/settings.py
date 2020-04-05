@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'states',
+    'confirmed',
     'rest_framework_swagger',
 ]
 
@@ -76,23 +77,23 @@ WSGI_APPLICATION = 'api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ncovid',
-        'USER': "USER",
-        'PASSWORD': "PWD",
-        'HOST': 'localhost',  # Or an IP Address that your DB is hosted on
-        'PORT': '3306',  # port number
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'ncovid',
+#         'USER': "USER",
+#         'PASSWORD': "PWD",
+#         'HOST': 'localhost',  # Or an IP Address that your DB is hosted on
+#         'PORT': '3306',  # port number
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 # DATABASES = {
 #     'default': {
