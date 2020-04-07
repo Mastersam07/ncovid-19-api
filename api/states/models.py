@@ -49,8 +49,16 @@ from django.db import models
 
 class Data(models.Model):
     id = models.IntegerField(primary_key=True)
-    states = models.CharField(db_column='States', max_length=13, blank=True, null=True)  # Field name made lowercase.
-    cases = models.CharField(db_column='Cases', max_length=3, blank=True, null=True)  # Field name made lowercase.
+    States = models.CharField(db_column='States', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    No_of_cases = models.CharField(db_column='No_of_cases', max_length=50, blank=True, null=True)  # Field name made
+    # lowercase.
+    No_on_admission = models.CharField(db_column='No_on_admission', max_length=50, blank=True, null=True)  # Field
+    # name made
+    # lowercase.
+    No_discharged = models.CharField(db_column='No_discharged', max_length=50, blank=True, null=True)  # Field name made
+    # lowercase.
+    No_of_deaths = models.CharField(db_column='No_of_deaths', max_length=50, blank=True,null=True)  # Field name made
+    # lowercase.
 
     def __str__(self):
         return self.states
