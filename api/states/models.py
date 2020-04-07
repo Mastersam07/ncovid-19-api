@@ -61,7 +61,7 @@ class Data(models.Model):
     # lowercase.
 
     def __str__(self):
-        return self.states
+        return self.States
 
     class Meta:
         managed = False
