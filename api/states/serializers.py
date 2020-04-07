@@ -10,7 +10,6 @@ from .models import Data
 #
 #
 class StateSerializer(serializers.ModelSerializer):
-    # cases = CaseSerializer(many=True, read_only=True, required=False)
 
     class Meta:
         model = Data
