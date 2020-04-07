@@ -11,7 +11,7 @@ from .serializers import StateSerializer  # CaseSerializer
 class StateList(APIView):
     @staticmethod
     def get(request):
-        states = Data.objects.all()[:36]
+        states = Data.objects.all()
         data = StateSerializer(states, many=True).data
         return Response(data)
 
