@@ -1,11 +1,10 @@
 import sqlite3
 
-import MySQLdb
+import psycopg2
 from bs4 import BeautifulSoup
 import requests
 from sqlalchemy import create_engine  # db engine
 import pandas as pd
-
 
 headers = {
     #     # 'user-agent': user_agent,
@@ -44,12 +43,6 @@ for i in range(0, len(states), 2):
 print(cases)
 print(somes)
 
-# set length to be 37 due to irregularities
-# print(len(somes[0:37]))
-# print(somes[0:37])
-# print(len(cases[0:37]))
-# print(cases)
-
 # take data to pandas dataframe
 df = pd.DataFrame()
 df['Categories'] = somes
@@ -63,30 +56,26 @@ print('Dataframe\n', df)
 #
 # from sqlalchemy import create_engine
 
-# mysql engine
-# engine = create_engine('mysql+pymysql://root:@localhost/ncovid')
-
 # sqlite engine
 # engine = create_engine(r'sqlite:///db.sqlite3')
 
-# connections for mysql
-# con = MySQLdb.connect(host="localhost", user="root",
-#                       passwd="", db="ncovid")
-
 # connections for sqlite
-con = sqlite3.connect(r"C:\Users\USER\Desktop\ncovid-19-api\api\db.sqlite3")
+# con = sqlite3.connect(r"C:\Users\USER\Desktop\ncovid-19-api\api\db.sqlite3")
+
+# connections for postgresql
+# con = psycopg2.connect(host="localhost", database="ncovid", user="postgres", password="mastersam")
 
 # add postgres db engine
-# engine = create_engine('postgresql+psycopg2://postgres:mastersam@localhost/ncovid')
+engine = create_engine('postgresql+psycopg2://postgres:mastersam@localhost/ncovid')
 #
-# # adding df to tables
-df.to_sql(con=con, name='confirmed', if_exists='replace', index=True, index_label='id')
-# #
-print('Data transferred from df to sqlite successfully!!!')
+# adding df to tables
+df.to_sql(con=engine, name='confirmed', if_exists='replace', index=True, index_label='id')
+#
+print('Data transferred from df to postgresql successfully!!!')
 
 # checking the data
 print('checking the data...')
-conn = sqlite3.connect(r"C:\Users\USER\Desktop\ncovid-19-api\api\db.sqlite3")
+conn = psycopg2.connect(host="localhost", database="ncovid", user="postgres", password="mastersam")
 cur = conn.cursor()
 cur.execute("SELECT * FROM confirmed")
 
