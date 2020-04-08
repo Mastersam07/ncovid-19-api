@@ -9,14 +9,14 @@ from django.db import models
 
 
 class Daily(models.Model):
-    # id = models.IntegerField(primary_key=True)
-    Date = models.CharField(db_column='Date', max_length=50, blank=True, null=False, primary_key=True)  # Field name
+    id = models.IntegerField(primary_key=True)
+    Date = models.CharField(db_column='Date', max_length=50, blank=True, null=False)  # Field name
     # made lowercase.
-    No_of_cases = models.CharField(db_column='No of cases', max_length=50, blank=True, null=True)  # Field name made
+    No_of_cases = models.CharField(db_column='Confirmed_Cases', max_length=50, blank=True, null=True)  # Field name made
     # lowercase.
-    No_of_recovered = models.CharField(db_column='No of recovered', max_length=50, blank=True, null=True)  # Field
+    No_of_recovered = models.CharField(db_column='Recovered', max_length=50, blank=True, null=True)  # Field
     # name made lowercase .
-    No_of_deaths = models.CharField(db_column='No of deaths', max_length=50, blank=True, null=True)  # Field name made
+    No_of_deaths = models.CharField(db_column='Deaths', max_length=50, blank=True, null=True)  # Field name made
     # lowercase.
 
     def __str__(self):
