@@ -7,4 +7,4 @@ class DailySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Daily
-        fields = ('No_of_cases', 'No_of_recovered', 'No_of_deaths')
+        fields = ('Date', 'No_of_cases', 'No_of_recovered', 'No_of_deaths')
