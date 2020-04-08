@@ -2,6 +2,8 @@
 
 Get Nigeria Covid-19 states by states
 
+![Programming Language](https://img.shields.io/badge/Language-Python-success)
+![Framework](https://img.shields.io/badge/Framework-Django%20Rest-success)
 ![Uptime Robot status](https://img.shields.io/uptimerobot/status/m784682119-b401cf1172c170a34a076beb?style=flat-square)
 ![Uptime Robot ratio (7 days)](https://img.shields.io/uptimerobot/ratio/7/m784682119-b401cf1172c170a34a076beb?style=flat-square)
 [![GitHub contributors](https://img.shields.io/github/contributors/mastersam07/ncovid-19-api?color=success&style=flat-square)](https://github.com/Mastersam07/ncovid-19-api/graphs/contributors)
