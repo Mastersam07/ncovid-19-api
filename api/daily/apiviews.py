@@ -16,7 +16,7 @@ class DailyList(APIView):
 
 class DailyDetail(APIView):
     @staticmethod
-    def get(request, date):
-        state = get_object_or_404(Daily, pk=date)
-        data = DailySerializer(state).data
+    def get(request, id):
+        daily = get_object_or_404(Daily, pk=id)
+        data = DailySerializer(daily).data
         return Response(data)
