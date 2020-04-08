@@ -1,7 +1,6 @@
 from rest_framework import generics, viewsets
 from rest_framework.generics import get_object_or_404
 from rest_framework.views import APIView
-from rest_framework import status
 from rest_framework.response import Response
 
 from .models import Data
@@ -24,14 +23,6 @@ class StateDetail(APIView):
         return Response(data)
 
 
-# class CasesList(generics.ListCreateAPIView):
-#     def get_queryset(self):
-#         queryset = Cases.objects.filter(states_id=self.kwargs["pk"])
-#         return queryset
-#
-#     serializer_class = CaseSerializer
-#
-#
 class StateViewSet(viewsets.ModelViewSet):
     queryset = Data.objects.all()
     serializer_class = StateSerializer
