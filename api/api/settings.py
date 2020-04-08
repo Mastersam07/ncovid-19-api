@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'states',
     'confirmed',
+    'daily',
     'rest_framework_swagger',
 ]
 
