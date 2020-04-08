@@ -25,5 +25,6 @@ urlpatterns = [
     path(r'api/docs/', schema_view),
     re_path(r'^', include('states.urls')),
     re_path(r'^', include('confirmed.urls')),
+    re_path(r'^', include('daily.urls')),
     path(r'', include_docs_urls(title='Nigeria Covid-19 API')),
 ]

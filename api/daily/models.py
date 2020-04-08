@@ -9,8 +9,9 @@ from django.db import models
 
 
 class Daily(models.Model):
-    id = models.IntegerField(primary_key=True)
-    Date = models.CharField(db_column='States', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    # id = models.IntegerField(primary_key=True)
+    Date = models.CharField(db_column='Date', max_length=50, blank=True, null=False, primary_key=True)  # Field name
+    # made lowercase.
     No_of_cases = models.CharField(db_column='No of cases', max_length=50, blank=True, null=True)  # Field name made
     # lowercase.
     No_of_recovered = models.CharField(db_column='No of recovered', max_length=50, blank=True, null=True)  # Field
