@@ -28,6 +28,7 @@ Check the `live API` <a href="https://covid9ja.herokuapp.com/"> here</a>
 ## ✨ Features
 - [x] Nigeria states and cases
 - [x] Nigeria total cases
+- [x] Nigeria daily cases
 
 
 ## Dependencies
@@ -73,6 +74,24 @@ $ python manage.py migrate
 ```sh
 $ python manage.py runserver
 ```
+
+#### 8. Run the application in deployment(debug: false)
+
+* ##### Create the folder "static" in the project root directory
+* ##### Add the below bit of code to settings.py
+
+```sh
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+```
+* ##### Run the below command in your terminal
+```sh
+$ python manage.py collectstatic
+```
+* ##### Your project is now production ready
 
 ## 📸 ScreenShots
 
