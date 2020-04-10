@@ -1,10 +1,10 @@
 id,States,No_of_cases,No_on_admission,No_discharged,No_of_deaths
-0,Lagos,145,111,32,2
+0,Lagos,158,124,39,2
 1,Abuja FCT,54,39,7,2
 2,Osun,20,19,1,0
 3,Edo,12,9,0,1
 4,Oyo,11 ,10,0,0
-5,Bauchi,8,5,0,0
+5,Bauchi,6,3,0,0
 6,Akwa Ibom,5,5,0,0
 7,Kaduna,5,4,0,0
 8,Ogun,4,2,2,0
@@ -14,5 +14,5 @@ id,States,No_of_cases,No_on_admission,No_discharged,No_of_deaths
 12,Rivers,2,1,1,0
 13,Benue,1,1,0,0
 14,Ondo,1,1,0,0
-15,Delta,1,1,0,0
+15,Delta,2,1,0,1
 16,Katsina,1,1,0,1
