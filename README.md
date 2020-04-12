@@ -101,6 +101,14 @@ $ python manage.py collectstatic
 |<img src="ss/3.png" width="250">|<img src="ss/4.png" width="250">|
 |<img src="ss/5.png" width="250">|
 
+## 📊📈📉
+#### For the complete data in csv format, check the below:
+#### - [Total Data](https://github.com/Mastersam07/ncovid-19-api/blob/master/data_getter/ncovid.csv)
+#### - [Daily Reports](https://github.com/Mastersam07/ncovid-19-api/blob/master/data_getter/daily_report.csv)
+
+
+## :heart: Found this project useful?
+#### If you found this project useful or you like what you see, then please consider giving it a :star: on Github and sharing it with your friends via social media.
 
 ## 🐛 Bugs/Request
 #### Encounter any problem(s)? feel free to open an issue. If you feel you could make something better, please raise a ticket on Github and I'll look into it. Pull request are also welcome.
@@ -108,5 +116,16 @@ $ python manage.py collectstatic
 ## ⭐️ License
 #### <a href="https://github.com/Mastersam07/ncovid-19-api/blob/master/LICENSE">MIT LICENSE</a>
 ##### Transitively from NCDC Site, the data may not be used for commercial purposes.
+
 ## 🤓 Developer(s)
-**Abada Samuel Oghenero**
+#### **Abada Samuel Oghenero**
+<a href="https://twitter.com/mastersam_"><img src="https://github.com/aritraroy/social-icons/blob/master/twitter-icon.png?raw=true" width="60"></a>
+<a href="https://linkedin.com/in/abada-samuel/"><img src="https://github.com/aritraroy/social-icons/blob/master/linkedin-icon.png?raw=true" width="60"></a>
+<a href="https://medium.com/@sammytech"><img src="https://github.com/aritraroy/social-icons/blob/master/medium-icon.png?raw=true" width="60"></a>
+<a href="https://facebook.com/abada.samueloghenero"><img src="https://github.com/aritraroy/social-icons/blob/master/facebook-icon.png?raw=true" width="60"></a>
+
+## Donate
+
+> #### If you found this project helpful or you learned something from the source code and want to thank me, consider buying me a cup of :coffee:
+>
+> #### - [Paystack NG](https://paystack.com/pay/mastersam)
