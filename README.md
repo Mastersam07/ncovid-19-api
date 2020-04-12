@@ -38,6 +38,15 @@ Check the `live API` <a href="https://covid9ja.herokuapp.com/"> here</a>
 * [Django Rest Framework](https://www.django-rest-framework.org/)
 * [PostgreSql](https://www.postgresql.org/)
 
+## Routes
+- #### /: contains coreapi documentation
+- #### /api/docs: contains swagger documentation
+- #### /api/confirmed: generate a summary of all cases in Nigeria
+- #### /api/daily: generate a summary of all cases from apex day to current day
+- #### /api/daily/{id}: generate a summary of cases on a particular day id
+- #### /api/states: generate a summary of all infected states cases
+- #### /api/states/{id}: generate a summary of cases in a particular state given its id
+
 ## Getting started
 
 #### 1. [Setting up PostgreSql](https://www.postgresql.org/)
@@ -103,8 +112,8 @@ $ python manage.py collectstatic
 
 ## 📊📈📉
 #### For the complete data in csv format, check the below:
-#### - [Total Data](https://github.com/Mastersam07/ncovid-19-api/blob/master/data_getter/ncovid.csv)
-#### - [Daily Reports](https://github.com/Mastersam07/ncovid-19-api/blob/master/data_getter/daily_report.csv)
+- #### [Total Data](https://github.com/Mastersam07/ncovid-19-api/blob/master/data_getter/ncovid.csv)
+- #### [Daily Reports](https://github.com/Mastersam07/ncovid-19-api/blob/master/data_getter/daily_report.csv)
 
 
 ## :heart: Found this project useful?
@@ -112,6 +121,9 @@ $ python manage.py collectstatic
 
 ## 🐛 Bugs/Request
 #### Encounter any problem(s)? feel free to open an issue. If you feel you could make something better, please raise a ticket on Github and I'll look into it. Pull request are also welcome.
+
+## Showcase
+- #### [https://github.com/Mastersam07/ncovid](https://github.com/Mastersam07/ncovid), (Flutter) by [@mastersam07](https://github.com/mastersam07)
 
 ## ⭐️ License
 #### <a href="https://github.com/Mastersam07/ncovid-19-api/blob/master/LICENSE">MIT LICENSE</a>
