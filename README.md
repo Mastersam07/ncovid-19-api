@@ -123,7 +123,7 @@ $ python manage.py collectstatic
 #### Encounter any problem(s)? feel free to open an issue. If you feel you could make something better, please raise a ticket on Github and I'll look into it. Pull request are also welcome.
 
 ## Showcase
-- #### [https://github.com/Mastersam07/ncovid](https://github.com/Mastersam07/ncovid), (Flutter) by [@mastersam07](https://github.com/mastersam07)
+- #### ![flutter](ss/flutterLogo1.png "flutter logo") [https://github.com/Mastersam07/ncovid](https://github.com/Mastersam07/ncovid), (Flutter) by [@mastersam07](https://github.com/mastersam07)
 
 ## ⭐️ License
 #### <a href="https://github.com/Mastersam07/ncovid-19-api/blob/master/LICENSE">MIT LICENSE</a>
