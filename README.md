@@ -126,6 +126,6 @@ $ python manage.py collectstatic
 
 ## Donate
 
-> #### If you found this project helpful or you learned something from the source code and want to thank me, consider buying me a cup of :coffee:
+> #### If you found this project or the data helpful or you learned something from the source code and want to thank me, consider buying me a cup of :coffee:
 >
 > #### - [Paystack NG](https://paystack.com/pay/mastersam)
