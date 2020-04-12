@@ -1,20 +1,21 @@
 id,States,No_of_cases,No_on_admission,No_discharged,No_of_deaths
-0,Lagos,163,129,46,2
-1,Abuja FCT,56,41,7,2
+0,Lagos,174,119,50,5
+1,Abuja FCT,56,43,11,2
 2,Osun,20,19,1,0
-3,Edo,12,9,0,1
-4,Oyo,11 ,10,0,0
+3,Edo,12,11,0,1
+4,Oyo,11 ,7,4,0
 5,Ogun,7,5,2,0
-6,Bauchi,6,3,0,0
-7,Kaduna,6,5,0,0
+6,Bauchi,6,6,0,0
+7,Kaduna,6,6,0,0
 8,Akwa Ibom,5,5,0,0
 9,Katsina,4,3,0,1
-10,Enugu,2,2,0,0
-11,Ekiti,2,1,1,0
-12,Kwara,2,0,0,0
-13,Rivers,2,1,1,0
-14,Ondo,2,2,0,0
-15,Delta,2,1,0,1
+10,Delta,3,2,0,1
+11,Enugu,2,2,0,0
+12,Ekiti,2,1,1,0
+13,Kwara,2,2,0,0
+14,Rivers,2,1,1,0
+15,Ondo,2,2,0,0
 16,Benue,1,1,0,0
 17,Niger,1,1,0,0
 18,Anambra,1,1,0,0
+19,Kano,1,1,0,0
