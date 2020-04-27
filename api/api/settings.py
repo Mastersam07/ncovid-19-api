@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'confirmed',
     'daily',
     'rest_framework_swagger',
+    'admin_honeypot',
 ]
 
 REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'}

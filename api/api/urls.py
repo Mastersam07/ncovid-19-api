@@ -22,8 +22,9 @@ schema_view = get_swagger_view(title='Nigeria Covid-19 API')
 api_doc = include_docs_urls(title='Nigeria Covid-19 API')
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('somenewurl/', admin.site.urls),
     path(r'api/docs/', schema_view),
+    path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
     re_path(r'^', include('states.urls')),
     re_path(r'^', include('confirmed.urls')),
     re_path(r'^', include('daily.urls')),
