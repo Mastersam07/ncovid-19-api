@@ -19,6 +19,7 @@ from rest_framework_swagger.views import get_swagger_view
 from rest_framework.documentation import include_docs_urls
 
 schema_view = get_swagger_view(title='Nigeria Covid-19 API')
+api_doc = include_docs_urls(title='Nigeria Covid-19 API')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,5 +27,5 @@ urlpatterns = [
     re_path(r'^', include('states.urls')),
     re_path(r'^', include('confirmed.urls')),
     re_path(r'^', include('daily.urls')),
-    path(r'', include_docs_urls(title='Nigeria Covid-19 API')),
+    path(r'', api_doc),
 ]
