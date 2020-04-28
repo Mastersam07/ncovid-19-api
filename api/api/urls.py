@@ -18,14 +18,27 @@ from django.urls import path, re_path, include
 from rest_framework_swagger.views import get_swagger_view
 from rest_framework.documentation import include_docs_urls
 from django_otp.admin import OTPAdminSite
+from django.contrib.auth.models import User
+from django_otp.plugins.otp_totp.models import TOTPDevice
+
 
 admin.site.__class__ = OTPAdminSite
+
+
+class OTPAdmin(OTPAdminSite):
+    pass
+
+
+admin_site = OTPAdmin(name='OTPAdmin')
+admin_site.register(User)
+admin_site.register(TOTPDevice)
 
 schema_view = get_swagger_view(title='Nigeria Covid-19 API')
 api_doc = include_docs_urls(title='Nigeria Covid-19 API')
 
 urlpatterns = [
-    path('somenewurl/', admin.site.urls),
+    path('somenewurl/', admin_site.urls),
+    path('some/', admin.site.urls),
     path(r'api/docs/', schema_view),
     path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
     re_path(r'^', include('states.urls')),
