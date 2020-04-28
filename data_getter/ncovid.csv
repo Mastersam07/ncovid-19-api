@@ -1,29 +1,34 @@
 id,States,No_of_cases,No_on_admission,No_discharged,No_of_deaths
-0,Lagos,657,525,116,16
-1,Abuja FCT,138,100,35,3
-2,Kano,73,72,0,1
-3,Ogun,35,29,5,1
-4,Gombe,30,30,0,0
-5,Katsina,21,20,0,1
-6,Osun,20,2,18,0
-7,Oyo,18 ,12,5,1
-8,Edo,19,9,7,3
-9,Borno,12,10,0,2
-10,Kwara,11,9,2,0
-11,Akwa Ibom,11,7,3,1
-12,Kaduna,10,6,4,0
-13,Bauchi,8,3,5,0
-14,Delta,6,5,0,1
-15,Ekiti,4,1,2,1
-16,Ondo,3,1,2,0
-17,Abia,2,2,0,0
-18,Enugu,2,0,2,0
-19,Rivers,3,0,2,1
-20,Niger,2,2,0,0
-21,Jigawa,2,2,0,0
-22,Benue,1,1,0,0
-23,Anambra,1,1,0,0
-24,Sokoto,2,2,0,0
-25,Zamfara,2,2,0,0
-26,Adamawa,1,1,0,0
-27,Plateau,1,1,0,0
+0,Lagos,764,602,143,19
+1,Abuja FCT,157,118,36,3
+2,Kano,77,76,0,1
+3,Borno,41,39,0,2
+4,Gombe,37,37,0,0
+5,Ogun,35,29,5,1
+6,Osun,34,14,18,2
+7,Katsina,30,24,4,2
+8,Edo,25,14,8,3
+9,Oyo,21 ,10,9,2
+10,Kaduna,15,9,6,0
+11,Bauchi,14,8,6,0
+12,Akwa Ibom,12,2,9,1
+13,Sokoto,10,10,0,0
+14,Kwara,11,9,2,0
+15,Ekiti,8,5,2,1
+16,Ondo,8,6,2,0
+17,Delta,6,5,0,1
+18,Rivers,6,2,2,2
+19,Taraba,8,8,0,0
+20,Abia,2,2,0,0
+21,Enugu,2,0,2,0
+22,Niger,2,2,0,0
+23,Jigawa,2,2,0,0
+24,Zamfara,2,2,0,0
+25,Benue,1,1,0,0
+26,Anambra,1,0,1,0
+27,Adamawa,1,1,0,0
+28,Plateau,1,1,0,0
+29,Imo,1,1,0,0
+30,Bayelsa,1,1,0,0
+31,Ebonyi,1,1,0,0
+32,Kebbi,1,1,0,0
