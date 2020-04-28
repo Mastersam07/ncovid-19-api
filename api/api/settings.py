@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'hbzuywojk43$vn(w=!)q3lwmiqlixz6a8w#dvo+yq3n7eby^(j'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'covid9ja.herokuapp.com']
 
@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'daily',
     'rest_framework_swagger',
     'admin_honeypot',
+    'django_otp',
+    'django_otp.plugins.otp_totp',
+    # 'djangosecure',
 ]
 
 REST_FRAMEWORK = {'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'}
@@ -53,7 +56,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_otp.middleware.OTPMiddleware',
 ]
+
+OTP_TOTP_ISSUER = 'Awesome Inc.'
 
 ROOT_URLCONF = 'api.urls'
 
@@ -148,3 +154,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+# SECURE_SSL_REDIRECT = True
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_FRAME_DENY = True
+# SECURE_CONTENT_TYPE_NOSNIFF = True
+# SECURE_BROWSER_XSS_FILTER = True
+# SESSION_COOKIE_SECURE = True
+# SESSION_COOKIE_HTTPONLY = True

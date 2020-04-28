@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path, re_path, include
 from rest_framework_swagger.views import get_swagger_view
 from rest_framework.documentation import include_docs_urls
+from django_otp.admin import OTPAdminSite
+
+admin.site.__class__ = OTPAdminSite
 
 schema_view = get_swagger_view(title='Nigeria Covid-19 API')
 api_doc = include_docs_urls(title='Nigeria Covid-19 API')
