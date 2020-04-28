@@ -18,8 +18,6 @@ from django.urls import path, re_path, include
 from rest_framework_swagger.views import get_swagger_view
 from rest_framework.documentation import include_docs_urls
 from django_otp.admin import OTPAdminSite
-from django.contrib.auth.models import User
-from django_otp.plugins.otp_totp.models import TOTPDevice
 
 
 admin.site.__class__ = OTPAdminSite
@@ -28,6 +26,9 @@ admin.site.__class__ = OTPAdminSite
 class OTPAdmin(OTPAdminSite):
     pass
 
+
+from django.contrib.auth.models import User
+from django_otp.plugins.otp_totp.models import TOTPDevice
 
 admin_site = OTPAdmin(name='OTPAdmin')
 admin_site.register(User)
