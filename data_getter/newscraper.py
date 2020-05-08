@@ -15,33 +15,47 @@ headers = {
 # make a request with headers
 r = requests.get('https://covid19.ncdc.gov.ng', headers=headers, timeout=15)
 
-print(r.status_code)  # 200 for success
+# print(r.status_code)  # 200 for success
 
 content = BeautifulSoup(r.text, 'lxml')  # parsing content
 
-My_table = content.find('table', {'id': 'custom1'})  # table to be scrapped having id as custom3
+My_table = content.findAll('div', {'class': 'col-xs-3 col-md-3 col-xl-3'})  # div for all data
+Samples = content.find('div', {'class': 'col-md-12 col-xl-3'})  # div for total tested sapmles
 
-links = My_table.findAll('b')  # all cases data seems to be in b tags
-stately = My_table.findAll('td')  # all state name seems to be in td tags
+# print(Samples.find('span').text)
+# assign each div
+confirmed_cases = My_table[0]
+active_cases = My_table[1]
+discharged_cases = My_table[2]
+death = My_table[3]
 
-# save cases data to list
-cases = []
-for link in links:
-    cases.append(link.text)
-#
-# save states data to list
-states = []
-for state in stately:
-    states.append(state.text)
+# get the category data
+sample_cat = Samples.find('h6').text
+confirmed_cat = confirmed_cases.find('h6').text
+active_cat = active_cases.find('h6').text
+discharged_cat = discharged_cases.find('h6').text
+death_cat = death.find('h6').text
 
-# escape string appears in list in odd indexes
-# get states with even indexes
-somes = []
-for i in range(0, len(states), 2):
-    somes.append(states[i])
+# get the figures data
+sample_data = Samples.find('span').text
+confirmed_data = confirmed_cases.find('h2').text
+active_data = active_cases.find('h2').text
+discharged_data = discharged_cases.find('h2').text
+death_data = death.find('h2').text
 
-print(cases)
-print(somes)
+# check data
+print(sample_cat, sample_data)
+print(confirmed_cat, confirmed_data)
+print(active_cat, active_data)
+print(discharged_cat, discharged_data)
+print(death_cat, death_data)
+
+# pass all outputs to list
+somes = [sample_cat, confirmed_cat, discharged_cat, death_cat]
+cases = [sample_data, confirmed_data, discharged_data, death_data]
+
+# print(cases)
+# print(somes)
 
 # take data to pandas dataframe
 df = pd.DataFrame()
@@ -53,17 +67,6 @@ print('Dataframe\n', df)
 # save data to csv
 # df.to_csv(r'ncovid.csv', index=True, index_label='id')
 # print("SUCCESS!!!")
-#
-# from sqlalchemy import create_engine
-
-# sqlite engine
-# engine = create_engine(r'sqlite:///db.sqlite3')
-
-# connections for sqlite
-# con = sqlite3.connect(r"C:\Users\USER\Desktop\ncovid-19-api\api\db.sqlite3")
-
-# connections for postgresql
-# con = psycopg2.connect(host="localhost", database="ncovid", user="postgres", password="mastersam")
 
 # add postgres db engine
 engine = create_engine('postgresql+psycopg2://postgres:mastersam@localhost/ncovid')
@@ -72,7 +75,7 @@ engine = create_engine('postgresql+psycopg2://postgres:mastersam@localhost/ncovi
 df.to_sql(con=engine, name='confirmed', if_exists='replace', index=True, index_label='id')
 #
 print('Data transferred from df to postgresql successfully!!!')
-
+#
 # checking the data
 print('checking the data...')
 conn = psycopg2.connect(host="localhost", database="ncovid", user="postgres", password="mastersam")
