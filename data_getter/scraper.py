@@ -47,21 +47,21 @@ headers = {
 # make a request with headers
 r = requests.get('https://covid19.ncdc.gov.ng', headers=headers, timeout=15)
 
-print(r.status_code)  # 200 for success
+# print(r.status_code)  # 200 for success
 
 content = BeautifulSoup(r.text, 'lxml')  # parsing content
 
-My_table = content.find('table', {'id': 'custom3'})  # table to be scrapped having id as custom3
+My_table = content.find('table', {'id': 'custom1'})  # table to be scrapped having id as custom1
 
 # links = My_table.findAll('b')  # all cases data seems to be in b tags
-stately = My_table.findAll('p')  # all state name seems to be in td tags
+stately = My_table.findAll('td')  # all state name seems to be in td tags
 
 # print(links)
 
 # save states data to list
 states = []
 for state in stately:
-    states.append(state.text)
+    states.append(state.text.strip("\n"))
 
 # print(states)
 
@@ -69,8 +69,9 @@ for state in stately:
 somes = []
 for i in range(0, len(states), 5):
     somes.append(states[i])
-
-# print(somes[0:len(somes) - 1])
+print("states")
+print(somes)
+print("Total number of affected states:", len(somes)+1)
 
 # save cases data to list
 all_cases = []
@@ -78,90 +79,89 @@ for i in range(0, len(states)):
     # checking condition
     if i % 5 != 0:
         all_cases.append(states[i])
-
-list_all_cases = all_cases[0:-4]
+print("all cases")
+print(all_cases)
 
 # save confirmed cases data to list
 confirmed_cases = []
-for i in range(0, len(list_all_cases), 4):
-    confirmed_cases.append(list_all_cases[i])
-
-# print(confirmed_cases)
+for i in range(0, len(all_cases), 4):
+    confirmed_cases.append(all_cases[i])
+print("confirmed")
+print(confirmed_cases)
 
 # save cases data to list
 admitted_cases = []
-for i in range(1, len(list_all_cases), 4):
-    admitted_cases.append(list_all_cases[i])
-
-# print(admitted_cases)
+for i in range(1, len(all_cases), 4):
+    admitted_cases.append(all_cases[i])
+print("admitted")
+print(admitted_cases)
 
 # save discharged cases data to list
 discharged_cases = []
-for i in range(2, len(list_all_cases), 4):
-    discharged_cases.append(list_all_cases[i])
-
-# print(discharged_cases)
+for i in range(2, len(all_cases), 4):
+    discharged_cases.append(all_cases[i])
+print("recovered")
+print(discharged_cases)
 
 # save deaths data to list
 deaths = []
-for i in range(3, len(list_all_cases), 4):
-    deaths.append(list_all_cases[i])
+for i in range(3, len(all_cases), 4):
+    deaths.append(all_cases[i])
+print("deaths")
+print(deaths)
 
-# print(deaths)
-
-
-# take data to pandas dataframe
-df = pd.DataFrame()
-df['States'] = somes[0:len(somes) - 1]
-df['No_of_cases'] = confirmed_cases
-df['No_on_admission'] = admitted_cases
-df['No_discharged'] = discharged_cases
-df['No_of_deaths'] = deaths
+# # take data to pandas dataframe
+# df = pd.DataFrame()
+# df['States'] = somes[0:len(somes) - 1]
+# df['No_of_cases'] = confirmed_cases
+# df['No_on_admission'] = admitted_cases
+# df['No_discharged'] = discharged_cases
+# df['No_of_deaths'] = deaths
+# #
+# print('Dataframe\n', df)
+# #
+# # save data to csv
+# df.to_csv(r'ncovid.csv', index=True, index_label='id')
+# print("SUCCESS!!!")
+# #
+# # from sqlalchemy import create_engine
 #
-print('Dataframe\n', df)
+# # mysql engine
+# # engine = create_engine('mysql+pymysql://root:@localhost/ncovid')
 #
-# save data to csv
-df.to_csv(r'ncovid.csv', index=True, index_label='id')
-print("SUCCESS!!!")
+# # sqlite engine
+# # engine = sqlite3.connect(r"C:\Users\USER\Desktop\ncovid-19-api\api\db.sqlite3")
 #
-# from sqlalchemy import create_engine
-
-# mysql engine
-# engine = create_engine('mysql+pymysql://root:@localhost/ncovid')
-
-# sqlite engine
-# engine = sqlite3.connect(r"C:\Users\USER\Desktop\ncovid-19-api\api\db.sqlite3")
-
-# connections for mysql
-# con = MySQLdb.connect(host="localhost", user="root",
-#                       passwd="", db="ncovid")
-
-# add postgres db engine
-engine = create_engine('postgresql+psycopg2://postgres:mastersam@localhost/ncovid')
+# # connections for mysql
+# # con = MySQLdb.connect(host="localhost", user="root",
+# #                       passwd="", db="ncovid")
 #
-# adding df to tables
-df.to_sql(con=engine, name='data', if_exists='replace', index=True, index_label='id')
+# # add postgres db engine
+# engine = create_engine('postgresql+psycopg2://postgres:mastersam@localhost/ncovid')
+# #
+# # adding df to tables
+# df.to_sql(con=engine, name='data', if_exists='replace', index=True, index_label='id')
+# #
+# print('Data transferred from df to postgresql successfully!!!')
 #
-print('Data transferred from df to postgresql successfully!!!')
-
-# checking the data
-# print('checking the data...')
-# conn = psycopg2.connect(host="localhost", database="ncovid", user="postgres", password="mastersam")
-# cur = conn.cursor()
-# cur.execute("SELECT * FROM confirmed")
-#
-# rows = cur.fetchall()
-#
-# for row in rows:
-#     print(row)
-# print('Done checking confirmed\nNow checking data!!!')
-#
-# cur.execute("SELECT * FROM data")
-#
-# rows = cur.fetchall()
-#
-# for row in rows:
-#     print(row)
-# print('Done checking data!!!')
-#
-# conn.close()
+# # checking the data
+# # print('checking the data...')
+# # conn = psycopg2.connect(host="localhost", database="ncovid", user="postgres", password="mastersam")
+# # cur = conn.cursor()
+# # cur.execute("SELECT * FROM confirmed")
+# #
+# # rows = cur.fetchall()
+# #
+# # for row in rows:
+# #     print(row)
+# # print('Done checking confirmed\nNow checking data!!!')
+# #
+# # cur.execute("SELECT * FROM data")
+# #
+# # rows = cur.fetchall()
+# #
+# # for row in rows:
+# #     print(row)
+# # print('Done checking data!!!')
+# #
+# # conn.close()
