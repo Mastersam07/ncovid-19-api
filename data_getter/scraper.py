@@ -69,9 +69,9 @@ for state in stately:
 somes = []
 for i in range(0, len(states), 5):
     somes.append(states[i])
-print("states")
-print(somes)
-print("Total number of affected states:", len(somes)+1)
+# print("states")
+# print(somes)
+# print("Total number of affected states:", len(somes)+1)
 
 # save cases data to list
 all_cases = []
@@ -79,89 +79,89 @@ for i in range(0, len(states)):
     # checking condition
     if i % 5 != 0:
         all_cases.append(states[i])
-print("all cases")
-print(all_cases)
+# print("all cases")
+# print(all_cases)
 
 # save confirmed cases data to list
 confirmed_cases = []
 for i in range(0, len(all_cases), 4):
     confirmed_cases.append(all_cases[i])
-print("confirmed")
-print(confirmed_cases)
+# print("confirmed")
+# print(confirmed_cases)
 
 # save cases data to list
 admitted_cases = []
 for i in range(1, len(all_cases), 4):
     admitted_cases.append(all_cases[i])
-print("admitted")
-print(admitted_cases)
+# print("admitted")
+# print(admitted_cases)
 
 # save discharged cases data to list
 discharged_cases = []
 for i in range(2, len(all_cases), 4):
     discharged_cases.append(all_cases[i])
-print("recovered")
-print(discharged_cases)
+# print("recovered")
+# print(discharged_cases)
 
 # save deaths data to list
 deaths = []
 for i in range(3, len(all_cases), 4):
     deaths.append(all_cases[i])
-print("deaths")
-print(deaths)
+# print("deaths")
+# print(deaths)
 
-# # take data to pandas dataframe
-# df = pd.DataFrame()
-# df['States'] = somes[0:len(somes) - 1]
-# df['No_of_cases'] = confirmed_cases
-# df['No_on_admission'] = admitted_cases
-# df['No_discharged'] = discharged_cases
-# df['No_of_deaths'] = deaths
+# take data to pandas dataframe
+df = pd.DataFrame()
+df['States'] = somes
+df['No_of_cases'] = confirmed_cases
+df['No_on_admission'] = admitted_cases
+df['No_discharged'] = discharged_cases
+df['No_of_deaths'] = deaths
+
+print('Dataframe\n', df)
 # #
-# print('Dataframe\n', df)
-# #
-# # save data to csv
-# df.to_csv(r'ncovid.csv', index=True, index_label='id')
-# print("SUCCESS!!!")
-# #
-# # from sqlalchemy import create_engine
+# save data to csv
+df.to_csv(r'ncovid.csv', index=True, index_label='id')
+print("SUCCESS!!!")
 #
-# # mysql engine
-# # engine = create_engine('mysql+pymysql://root:@localhost/ncovid')
+# from sqlalchemy import create_engine
+
+# mysql engine
+# engine = create_engine('mysql+pymysql://root:@localhost/ncovid')
+
+# sqlite engine
+# engine = sqlite3.connect(r"C:\Users\USER\Desktop\ncovid-19-api\api\db.sqlite3")
+
+# connections for mysql
+# con = MySQLdb.connect(host="localhost", user="root",
+#                       passwd="", db="ncovid")
+
+# add postgres db engine
+engine = create_engine('postgresql+psycopg2://postgres:mastersam@localhost/ncovid')
 #
-# # sqlite engine
-# # engine = sqlite3.connect(r"C:\Users\USER\Desktop\ncovid-19-api\api\db.sqlite3")
+# adding df to tables
+df.to_sql(con=engine, name='data', if_exists='replace', index=True, index_label='id')
 #
-# # connections for mysql
-# # con = MySQLdb.connect(host="localhost", user="root",
-# #                       passwd="", db="ncovid")
+print('Data transferred from df to postgresql successfully!!!')
+
+# checking the data
+# print('checking the data...')
+# conn = psycopg2.connect(host="localhost", database="ncovid", user="postgres", password="mastersam")
+# cur = conn.cursor()
+# cur.execute("SELECT * FROM confirmed")
 #
-# # add postgres db engine
-# engine = create_engine('postgresql+psycopg2://postgres:mastersam@localhost/ncovid')
-# #
-# # adding df to tables
-# df.to_sql(con=engine, name='data', if_exists='replace', index=True, index_label='id')
-# #
-# print('Data transferred from df to postgresql successfully!!!')
+# rows = cur.fetchall()
 #
-# # checking the data
-# # print('checking the data...')
-# # conn = psycopg2.connect(host="localhost", database="ncovid", user="postgres", password="mastersam")
-# # cur = conn.cursor()
-# # cur.execute("SELECT * FROM confirmed")
-# #
-# # rows = cur.fetchall()
-# #
-# # for row in rows:
-# #     print(row)
-# # print('Done checking confirmed\nNow checking data!!!')
-# #
-# # cur.execute("SELECT * FROM data")
-# #
-# # rows = cur.fetchall()
-# #
-# # for row in rows:
-# #     print(row)
-# # print('Done checking data!!!')
-# #
-# # conn.close()
+# for row in rows:
+#     print(row)
+# print('Done checking confirmed\nNow checking data!!!')
+#
+# cur.execute("SELECT * FROM data")
+#
+# rows = cur.fetchall()
+#
+# for row in rows:
+#     print(row)
+# print('Done checking data!!!')
+#
+# conn.close()
