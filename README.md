@@ -4,13 +4,11 @@ Get Nigeria Covid-19 states by states
 
 [![Programming Language](https://img.shields.io/badge/Language-Python-success?style=flat-square)](https://python.org)
 [![Framework](https://img.shields.io/badge/Framework-Django%20Rest-success?style=flat-square)](https://www.djangoproject.com/)
-![Uptime Robot status](https://img.shields.io/uptimerobot/status/m784682119-b401cf1172c170a34a076beb?style=flat-square)
-![Uptime Robot ratio (7 days)](https://img.shields.io/uptimerobot/ratio/7/m784682119-b401cf1172c170a34a076beb?style=flat-square)
 [![GitHub contributors](https://img.shields.io/github/contributors/mastersam07/ncovid-19-api?color=success&style=flat-square)](https://github.com/Mastersam07/ncovid-19-api/graphs/contributors)
 ![GitHub last commit](https://img.shields.io/github/last-commit/mastersam07/ncovid-19-api?style=flat-square)
 [![License](https://img.shields.io/badge/license-MIT-success.svg?style=flat-square)](https://github.com/Mastersam07/ncovid-19-api/blob/master/LICENSE)
 
-> This api is live
+> This project is discontinued and service shutdown
 >> Serving data from NCDC(Nigeria Center For Disease Control) as a JSON API
 
 
