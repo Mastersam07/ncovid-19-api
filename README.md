@@ -12,12 +12,6 @@ Get Nigeria Covid-19 states by states
 >> Serving data from NCDC(Nigeria Center For Disease Control) as a JSON API
 
 
-## Demo
-Check the `live API` <a href="https://covid9ja.herokuapp.com/"> here</a>
-<br>
-<a href="https://covid9ja.herokuapp.com/">Live API</a>
-<br>
-
 ## 💻 Requirements
 * Any Operating System (ie. MacOS X, Linux, Windows)
 * Any IDE with python installed on your system(ie. Pycharm, VSCode etc)
