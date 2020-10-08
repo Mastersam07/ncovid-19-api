@@ -1,7 +1,13 @@
+#!/usr/bin/env python3
+
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 from sqlalchemy import create_engine
+import locale
+
+# use local to convert comma formatted string numbers into Python integers
+locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 
 
 def update_database():
@@ -19,33 +25,35 @@ def update_database():
 
     content = BeautifulSoup(r.text, 'lxml')  # parsing content
 
-    My_table = content.find('table', {'id': 'custom3'})  # table to be scrapped having id as custom3
+    # table to be scrapped having id as custom1
+    My_table = content.find('table', {'id': 'custom1'})
 
-    links = My_table.findAll('b')  # all cases data seems to be in b tags
-    stately = My_table.findAll('td')  # all state name seems to be in td tags
+    # scrape the whole table. including state names and cases data
+    data = My_table.findAll('td')
 
-    # save cases data to list
-    cases = []
-    for link in links:
-        cases.append(link.text)
+    # save states data to a list
+    states = [data[index].text.strip() for index in range(0, len(data), 5)]
+    # save number of confirmed cases data to a list
+    cases = [locale.atoi(data[index].text.strip())
+             for index in range(1, len(data), 5)]
+    # save number of admissions to a list
+    admissions = [locale.atoi(data[index].text.strip())
+                  for index in range(2, len(data), 5)]
+    # save number of recovered cases data to a list
+    dischared = [locale.atoi(data[index].text.strip())
+                 for index in range(3, len(data), 5)]
+    # save number of deaths to a list
+    deaths = [locale.atoi(data[index].text.strip())
+              for index in range(4, len(data), 5)]
 
-    # save states data to list
-    states = []
-    for state in stately:
-        states.append(state.text)
-
-    # escape string appears in list in odd indexes
-    # get states with even indexes
-    somes = []
-    for i in range(0, len(states), 2):
-        somes.append(states[i])
-
-    # set length to be 37 due to irregularities
 
     # take data to pandas dataframe
     df = pd.DataFrame()
-    df['States'] = somes[0:37]
-    df['Cases'] = cases[0:37]
+    df['States'] = states
+    df['No_of_cases'] = cases
+    df['No_on_admission'] = admissions
+    df['No_discharged'] = dischared
+    df['No_of_deaths'] = deaths
 
     print('Dataframe\n', df)
 
@@ -63,3 +71,7 @@ def update_database():
     df.to_sql(con=engine, name='data', if_exists='replace', index=True, index_label='id')
 
     print('Data transferred from df to postgres successfully!!!')
+
+
+if __name__ == "__main__":
+    update_database()
