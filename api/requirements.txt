@@ -20,7 +20,7 @@ coreapi==2.3.3
 coreschema==0.0.4
 coverage==4.5.4
 coveralls==1.8.2
-cryptography==2.9
+cryptography==3.2
 cssselect==1.1.0
 cycler==0.10.0
 decorator==4.4.1
